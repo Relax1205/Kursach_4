@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Composer - Категории блюд</title>
+    <title>Recipe Composer - Типы мяса</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -20,74 +20,42 @@
 
     <div class="main_categories">
         <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="book-background">
+        <a href="categories.html" class="back-button">
+            <span class="back-arrow">←</span> Назад к категориям
+        </a>
         <div class="categories-container">
             <!-- Левая страница -->
-            <div class="category-item" data-position="1">
-                <a href="#" class="category-card" data-category="snack">
-                    <img src="./public/food/snack.png" alt="Закуска" class="category-image">
+            <div class="category-item">
+                <a href="#" class="category-card" data-category="beef">
+                    <img src="./public/food/beef.png" alt="Говядина" class="category-image">
                 </a>
-                <h2 class="category-title">Закуска</h2>
+                <h2 class="category-title">Говядина</h2>
             </div>
 
             <!-- Правая страница -->
-            <div class="category-item" data-position="2">
-                <a href="#" class="category-card" data-category="soup">
-                    <img src="./public/food/soup.png" alt="Суп" class="category-image">
+            <div class="category-item">
+                <a href="#" class="category-card" data-category="chicken">
+                    <img src="./public/food/chicken.png" alt="Курица" class="category-image">
                 </a>
-                <h2 class="category-title">Суп</h2>
+                <h2 class="category-title">Курица</h2>
             </div>
 
             <!-- Левая страница -->
-            <div class="category-item" data-position="3">
-                <a href="#" class="category-card" data-category="drink">
-                    <img src="./public/food/drink.png" alt="Напиток" class="category-image">
+            <div class="category-item">
+                <a href="#" class="category-card" data-category="mutton">
+                    <img src="./public/food/mutton.png" alt="Баранина" class="category-image">
                 </a>
-                <h2 class="category-title">Напиток</h2>
+                <h2 class="category-title">Баранина</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="4">
-                <a href="meat.html" class="category-card" data-category="main">
-                    <img src="./public/food/main_dish.png" alt="Основное Блюдо" class="category-image">
-                </a>
-                <h2 class="category-title">Основное Блюдо</h2>
-            </div>
-            
-            <!-- Стрелка для перехода на страницу с типами мяса -->
-            <a href="meat.html" class="navigation-arrow">
-                <div class="arrow-simple">›</div>
-            </a>
-
-            <!-- Левая страница -->
-            <div class="category-item" data-position="5">
-                <a href="#" class="category-card" data-category="dessert">
-                    <img src="./public/food/dessert.png" alt="Десерт" class="category-image">
-                </a>
-                <h2 class="category-title">Десерт</h2>
-            </div>
-
-            <!-- Правая страница -->
-            <div class="category-item" data-position="6">
-                <a href="#" class="category-card" data-category="garnish">
-                    <img src="./public/food/garnish.png" alt="Гарнир" class="category-image">
-                </a>
-                <h2 class="category-title">Гарнир</h2>
-            </div>
-
-            <!-- Правая страница -->
-            <div class="category-item" data-position="7">
-                <a href="#" class="category-card" data-category="bakery">
-                    <img src="./public/food/backery.png" alt="Выпечка" class="category-image">
-                </a>
-                <h2 class="category-title">Выпечка</h2>
-            </div>
+            <!-- Можно добавить и другие типы мяса при необходимости -->
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Загружаем сохраненную выбранную категорию
-            let selectedCategory = localStorage.getItem('selectedFoodCategory') || '';
+            let selectedCategory = localStorage.getItem('selectedMeatType') || '';
             
             // Применяем выделение к сохраненной категории
             if (selectedCategory) {
@@ -118,10 +86,10 @@
                     }
                     
                     // Сохраняем выбранную категорию
-                    localStorage.setItem('selectedFoodCategory', selectedCategory);
+                    localStorage.setItem('selectedMeatType', selectedCategory);
                 });
             });
         });
     </script>
 </body>
-</html>
+</html> 
