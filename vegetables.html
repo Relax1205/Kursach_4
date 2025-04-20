@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Composer - Типы мяса</title>
+    <title>Recipe Composer - Типы овощей</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
@@ -23,25 +23,31 @@
         <div class="categories-container">
             <!-- Левая страница -->
             <div class="category-item" data-position="1">
-                <a href="#" class="category-card" data-category="beef">
-                    <img src="./public/food/beef.png" alt="Говядина" class="category-image">
+                <a href="#" class="category-card" data-category="tomato">
+                    <img src="./public/food/tomato.png" alt="Помидоры" class="category-image">
                 </a>
-                <h2 class="category-title">Говядина</h2>
+                <h2 class="category-title">Помидоры</h2>
             </div>
 
             <!-- Правая страница -->
             <div class="category-item" data-position="2">
-                <a href="#" class="category-card" data-category="chicken">
-                    <img src="./public/food/chicken.png" alt="Курица" class="category-image">
+                <a href="#" class="category-card" data-category="cucumber">
+                    <img src="./public/food/cucumber.png" alt="Огурцы" class="category-image">
                 </a>
-                <h2 class="category-title">Курица</h2>
+                <h2 class="category-title">Огурцы</h2>
             </div>
+            
+            <!-- Стрелка для навигации к огурцам -->
+            <a href="#" class="navigation-arrow to-cucumber">
+                <div class="arrow-simple">›</div>
+            </a>
+
             <!-- Левая страница -->
             <div class="category-item" data-position="3">
-                <a href="#" class="category-card" data-category="mutton">
-                    <img src="./public/food/mutton.png" alt="Баранина" class="category-image">
+                <a href="#" class="category-card" data-category="potato">
+                    <img src="./public/food/potato.png" alt="Картофель" class="category-image">
                 </a>
-                <h2 class="category-title">Баранина</h2>
+                <h2 class="category-title">Картофель</h2>
             </div>
             
             <!-- Стрелка для возврата к категориям -->
@@ -49,19 +55,19 @@
                 <div class="arrow-simple">›</div>
             </a>
             
-            <!-- Стрелка для перехода к овощам -->
-            <a href="vegetables.html" class="navigation-arrow to-vegetables">
+            <!-- Стрелка для перехода к мясу -->
+            <a href="meat.html" class="navigation-arrow to-meat">
                 <div class="arrow-simple">›</div>
             </a>
 
-            <!-- Можно добавить и другие типы мяса при необходимости -->
+            <!-- Можно добавить и другие типы овощей при необходимости -->
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Загружаем сохраненную выбранную категорию
-            let selectedCategory = localStorage.getItem('selectedMeatType') || '';
+            let selectedCategory = localStorage.getItem('selectedVegetableType') || '';
             
             // Применяем выделение к сохраненной категории
             if (selectedCategory) {
@@ -92,21 +98,27 @@
                     }
                     
                     // Сохраняем выбранную категорию
-                    localStorage.setItem('selectedMeatType', selectedCategory);
+                    localStorage.setItem('selectedVegetableType', selectedCategory);
                 });
             });
             
             // Обработчики для стрелок навигации
-            document.querySelector('.to-chicken').addEventListener('click', function(e) {
+            document.querySelector('.to-cucumber').addEventListener('click', function(e) {
                 e.preventDefault();
-                // Находим карточку с курицей и имитируем клик
-                document.querySelector('[data-category="chicken"]').click();
+                // Находим карточку с огурцами и имитируем клик
+                document.querySelector('[data-category="cucumber"]').click();
             });
 
-            // Обработчик для перехода на страницу овощей
-            document.querySelector('.to-vegetables').addEventListener('click', function(e) {
+            // Обработчик для возврата к общим категориям
+            document.querySelector('.to-categories').addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location.href = 'vegetables.html';
+                window.location.href = 'categories.html';
+            });
+            
+            // Обработчик для перехода на страницу мяса
+            document.querySelector('.to-meat').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'meat.html';
             });
         });
     </script>

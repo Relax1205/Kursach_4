@@ -47,7 +47,7 @@
 
             <!-- Правая страница -->
             <div class="category-item" data-position="4">
-                <a href="meat.html" class="category-card" data-category="main">
+                <a href="#" class="category-card" data-category="main">
                     <img src="./public/food/main_dish.png" alt="Основное Блюдо" class="category-image">
                 </a>
                 <h2 class="category-title">Основное Блюдо</h2>
@@ -100,6 +100,11 @@
             // Обработчик клика по категории
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', function(e) {
+                    // Если это ссылка на мясо, обрабатываем специально
+                    if (this.getAttribute('href') === 'meat.html') {
+                        return; // ссылка будет обработана в отдельном обработчике
+                    }
+                    
                     e.preventDefault();
                     const category = this.dataset.category;
                     
@@ -121,6 +126,18 @@
                     localStorage.setItem('selectedFoodCategory', selectedCategory);
                 });
             });
+            
+            // Обработчик перехода страницы
+            const handlePageTransition = function(e) {
+                e.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                // Мгновенный переход без анимации
+                window.location.href = targetUrl;
+            };
+            
+            // Применяем обработчик к кнопке с мясом и стрелке
+            document.querySelector('.category-card[href="meat.html"]').addEventListener('click', handlePageTransition);
+            document.querySelector('.navigation-arrow').addEventListener('click', handlePageTransition);
         });
     </script>
 </body>
