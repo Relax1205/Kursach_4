@@ -19,27 +19,19 @@
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Позиционирование стрелок */
-.nav-arrow--to-chicken {
-    right: 25%;
-    top: 65%;
-}
 
-.nav-arrow--to-categories, 
-.nav-arrow--to-meat {
+.nav-arrow--left {
     left: 25%;
     top: 65%;
+    transform: rotate(170deg);
 }
 
-.nav-arrow--to-vegetables {
+.nav-arrow--right {
     right: 25%;
-    top: 45%;
+    top: 50%;
+    transform: rotate(345deg);
 }
 
-.nav-arrow--to-cucumber {
-    right: 25%;
-    top: 45%;
-}
 
 /* Левосторонние стрелки */
 .nav-arrow--to-categories .nav-arrow__symbol, 
