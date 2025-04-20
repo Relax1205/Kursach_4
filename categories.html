@@ -5,140 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Composer - Категории блюд</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <script src="js/categories.js"></script>
 </head>
-<body>
-    <nav>
-        <a href="index.html" class="logo-link">
-            <img src="public/icons/logo.png" alt="Recipe Composer Logo" class="logo">
+<body class="page">
+    <nav class="nav">
+        <a href="index.html" class="nav__logo-link">
+            <img src="public/icons/logo.png" alt="Recipe Composer Logo" class="nav__logo">
         </a>
-        <a href="index.html">Главная</a>
-        <a href="about.html">О наших рецептах</a>
-        <a href="favorites.html">Избранное</a>
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="about.html" class="nav__link">О наших рецептах</a>
+        <a href="favorites.html" class="nav__link">Избранное</a>
     </nav>
 
-    <div class="main_categories">
-        <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="book-background">
-        <div class="categories-container">
-            <!-- Левая страница -->
-            <div class="category-item" data-position="1">
-                <a href="#" class="category-card" data-category="snack">
-                    <img src="./public/food/snack.png" alt="Закуска" class="category-image">
+    <main class="categories">
+        <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="categories__book-background">
+        <div class="categories__container">
+            <!-- Закуска -->
+            <div class="category category--position-1">
+                <a href="#" class="category__card" data-category="snack">
+                    <img src="./public/food/snack.png" alt="Закуска" class="category__image">
                 </a>
-                <h2 class="category-title">Закуска</h2>
+                <h2 class="category__title">Закуска</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="2">
-                <a href="#" class="category-card" data-category="soup">
-                    <img src="./public/food/soup.png" alt="Суп" class="category-image">
+            <!-- Суп -->
+            <div class="category category--position-2">
+                <a href="#" class="category__card" data-category="soup">
+                    <img src="./public/food/soup.png" alt="Суп" class="category__image">
                 </a>
-                <h2 class="category-title">Суп</h2>
+                <h2 class="category__title">Суп</h2>
             </div>
 
-            <!-- Левая страница -->
-            <div class="category-item" data-position="3">
-                <a href="#" class="category-card" data-category="drink">
-                    <img src="./public/food/drink.png" alt="Напиток" class="category-image">
+            <!-- Напиток -->
+            <div class="category category--position-3">
+                <a href="#" class="category__card" data-category="drink">
+                    <img src="./public/food/drink.png" alt="Напиток" class="category__image">
                 </a>
-                <h2 class="category-title">Напиток</h2>
+                <h2 class="category__title">Напиток</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="4">
-                <a href="#" class="category-card" data-category="main">
-                    <img src="./public/food/main_dish.png" alt="Основное Блюдо" class="category-image">
+            <!-- Основное Блюдо -->
+            <div class="category category--position-4">
+                <a href="meat.html" class="category__card" data-category="main">
+                    <img src="./public/food/main_dish.png" alt="Основное Блюдо" class="category__image">
                 </a>
-                <h2 class="category-title">Основное Блюдо</h2>
+                <h2 class="category__title">Основное Блюдо</h2>
             </div>
             
             <!-- Стрелка для перехода на страницу с типами мяса -->
-            <a href="meat.html" class="navigation-arrow">
-                <div class="arrow-simple">›</div>
+            <a href="meat.html" class="nav-arrow nav-arrow--to-meat">
+                <div class="nav-arrow__symbol">›</div>
             </a>
 
-            <!-- Левая страница -->
-            <div class="category-item" data-position="5">
-                <a href="#" class="category-card" data-category="dessert">
-                    <img src="./public/food/dessert.png" alt="Десерт" class="category-image">
+            <!-- Десерт -->
+            <div class="category category--position-5">
+                <a href="#" class="category__card" data-category="dessert">
+                    <img src="./public/food/dessert.png" alt="Десерт" class="category__image">
                 </a>
-                <h2 class="category-title">Десерт</h2>
+                <h2 class="category__title">Десерт</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="6">
-                <a href="#" class="category-card" data-category="garnish">
-                    <img src="./public/food/garnish.png" alt="Гарнир" class="category-image">
+            <!-- Гарнир -->
+            <div class="category category--position-6">
+                <a href="#" class="category__card" data-category="garnish">
+                    <img src="./public/food/garnish.png" alt="Гарнир" class="category__image">
                 </a>
-                <h2 class="category-title">Гарнир</h2>
+                <h2 class="category__title">Гарнир</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="7">
-                <a href="#" class="category-card" data-category="bakery">
-                    <img src="./public/food/backery.png" alt="Выпечка" class="category-image">
+            <!-- Выпечка -->
+            <div class="category category--position-7">
+                <a href="#" class="category__card" data-category="bakery">
+                    <img src="./public/food/backery.png" alt="Выпечка" class="category__image">
                 </a>
-                <h2 class="category-title">Выпечка</h2>
+                <h2 class="category__title">Выпечка</h2>
             </div>
         </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Загружаем сохраненную выбранную категорию
-            let selectedCategory = localStorage.getItem('selectedFoodCategory') || '';
-            
-            // Применяем выделение к сохраненной категории
-            if (selectedCategory) {
-                const element = document.querySelector(`[data-category="${selectedCategory}"]`);
-                if (element) {
-                    element.classList.add('selected');
-                }
-            }
-
-            // Обработчик клика по категории
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    // Если это ссылка на мясо, обрабатываем специально
-                    if (this.getAttribute('href') === 'meat.html') {
-                        return; // ссылка будет обработана в отдельном обработчике
-                    }
-                    
-                    e.preventDefault();
-                    const category = this.dataset.category;
-                    
-                    // Снимаем выделение со всех категорий
-                    document.querySelectorAll('.category-card').forEach(c => {
-                        c.classList.remove('selected');
-                    });
-                    
-                    // Если кликнули на уже выбранную категорию - снимаем выбор
-                    if (selectedCategory === category) {
-                        selectedCategory = '';
-                    } else {
-                        // Иначе выбираем новую категорию
-                        this.classList.add('selected');
-                        selectedCategory = category;
-                    }
-                    
-                    // Сохраняем выбранную категорию
-                    localStorage.setItem('selectedFoodCategory', selectedCategory);
-                });
-            });
-            
-            // Обработчик перехода страницы
-            const handlePageTransition = function(e) {
-                e.preventDefault();
-                const targetUrl = this.getAttribute('href');
-                // Мгновенный переход без анимации
-                window.location.href = targetUrl;
-            };
-            
-            // Применяем обработчик к кнопке с мясом и стрелке
-            document.querySelector('.category-card[href="meat.html"]').addEventListener('click', handlePageTransition);
-            document.querySelector('.navigation-arrow').addEventListener('click', handlePageTransition);
-        });
-    </script>
+    </main>
 </body>
 </html>

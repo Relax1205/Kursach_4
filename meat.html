@@ -5,110 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Composer - Типы мяса</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <script src="js/products.js"></script>
+    <script src="js/meat.js"></script>
 </head>
-<body>
-    <nav>
-        <a href="index.html" class="logo-link">
-            <img src="public/icons/logo.png" alt="Recipe Composer Logo" class="logo">
+<body class="page">
+    <nav class="nav">
+        <a href="index.html" class="nav__logo-link">
+            <img src="public/icons/logo.png" alt="Recipe Composer Logo" class="nav__logo">
         </a>
-        <a href="index.html">Главная</a>
-        <a href="about.html">О наших рецептах</a>
-        <a href="favorites.html">Избранное</a>
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="about.html" class="nav__link">О наших рецептах</a>
+        <a href="favorites.html" class="nav__link">Избранное</a>
     </nav>
 
-    <div class="main_categories">
-        <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="book-background">
-        <div class="categories-container">
-            <!-- Левая страница -->
-            <div class="category-item" data-position="1">
-                <a href="#" class="category-card" data-category="beef">
-                    <img src="./public/food/beef.png" alt="Говядина" class="category-image">
+    <main class="product-page">
+        <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="product-page__book-background">
+        <div class="product-page__container">
+            <!-- Говядина -->
+            <div class="product product--position-1">
+                <a href="#" class="product__card" data-category="beef">
+                    <img src="./public/food/beef.png" alt="Говядина" class="product__image">
                 </a>
-                <h2 class="category-title">Говядина</h2>
+                <h2 class="product__title">Говядина</h2>
             </div>
 
-            <!-- Правая страница -->
-            <div class="category-item" data-position="2">
-                <a href="#" class="category-card" data-category="chicken">
-                    <img src="./public/food/chicken.png" alt="Курица" class="category-image">
+            <!-- Курица -->
+            <div class="product product--position-2">
+                <a href="#" class="product__card" data-category="chicken">
+                    <img src="./public/food/chicken.png" alt="Курица" class="product__image">
                 </a>
-                <h2 class="category-title">Курица</h2>
+                <h2 class="product__title">Курица</h2>
             </div>
-            <!-- Левая страница -->
-            <div class="category-item" data-position="3">
-                <a href="#" class="category-card" data-category="mutton">
-                    <img src="./public/food/mutton.png" alt="Баранина" class="category-image">
+            
+            <!-- Стрелка для навигации к курице -->
+            <a href="#" class="nav-arrow nav-arrow--to-chicken">
+                <div class="nav-arrow__symbol">›</div>
+            </a>
+
+            <!-- Баранина -->
+            <div class="product product--position-3">
+                <a href="#" class="product__card" data-category="mutton">
+                    <img src="./public/food/mutton.png" alt="Баранина" class="product__image">
                 </a>
-                <h2 class="category-title">Баранина</h2>
+                <h2 class="product__title">Баранина</h2>
             </div>
             
             <!-- Стрелка для возврата к категориям -->
-            <a href="categories.html" class="navigation-arrow to-categories">
-                <div class="arrow-simple">›</div>
+            <a href="categories.html" class="nav-arrow nav-arrow--to-categories">
+                <div class="nav-arrow__symbol">›</div>
             </a>
             
             <!-- Стрелка для перехода к овощам -->
-            <a href="vegetables.html" class="navigation-arrow to-vegetables">
-                <div class="arrow-simple">›</div>
+            <a href="vegetables.html" class="nav-arrow nav-arrow--to-vegetables">
+                <div class="nav-arrow__symbol">›</div>
             </a>
-
-            <!-- Можно добавить и другие типы мяса при необходимости -->
         </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Загружаем сохраненную выбранную категорию
-            let selectedCategory = localStorage.getItem('selectedMeatType') || '';
-            
-            // Применяем выделение к сохраненной категории
-            if (selectedCategory) {
-                const element = document.querySelector(`[data-category="${selectedCategory}"]`);
-                if (element) {
-                    element.classList.add('selected');
-                }
-            }
-
-            // Обработчик клика по категории
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const category = this.dataset.category;
-                    
-                    // Снимаем выделение со всех категорий
-                    document.querySelectorAll('.category-card').forEach(c => {
-                        c.classList.remove('selected');
-                    });
-                    
-                    // Если кликнули на уже выбранную категорию - снимаем выбор
-                    if (selectedCategory === category) {
-                        selectedCategory = '';
-                    } else {
-                        // Иначе выбираем новую категорию
-                        this.classList.add('selected');
-                        selectedCategory = category;
-                    }
-                    
-                    // Сохраняем выбранную категорию
-                    localStorage.setItem('selectedMeatType', selectedCategory);
-                });
-            });
-            
-            // Обработчики для стрелок навигации
-            document.querySelector('.to-chicken').addEventListener('click', function(e) {
-                e.preventDefault();
-                // Находим карточку с курицей и имитируем клик
-                document.querySelector('[data-category="chicken"]').click();
-            });
-
-            // Обработчик для перехода на страницу овощей
-            document.querySelector('.to-vegetables').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'vegetables.html';
-            });
-        });
-    </script>
+    </main>
 </body>
 </html> 
