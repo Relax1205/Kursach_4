@@ -3,8 +3,8 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация страницы продуктов
-    ProductPage.init('selectedMeatType', 'product__card');
+    ProductPage.init('product__card');
 
     // Инициализация навигационных стрелок
-    ProductPage.initArrows(arrowConfig);
+    // ProductPage.initArrows(arrowConfig);
 }); 

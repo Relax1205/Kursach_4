@@ -3,8 +3,7 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация страницы продуктов
-    // Используем уникальный ключ localStorage
-    ProductPage.init('selectedAnimalOriginProduct', 'product__card'); 
+    ProductPage.init('product__card'); 
 
     // Если нужны стрелки навигации, их тоже можно инициализировать:
     // ProductPage.initArrows(arrowConfig); 

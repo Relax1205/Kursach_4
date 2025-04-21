@@ -2,45 +2,48 @@
  * Базовый модуль для работы с продуктами
  */
 const ProductPage = {
+    storageKey: 'selectedProducts', // Глобальный ключ для всех продуктов
+
     /**
-     * Инициализация страницы продуктов
-     * @param {string} storageKey - ключ для локального хранилища
+     * Инициализация страницы продуктов для множественного выбора
      * @param {string} productCardSelector - селектор карточки продукта
      */
-    init: function(storageKey, productCardSelector) {
-        // Загружаем сохраненную выбранную категорию
-        let selectedCategory = localStorage.getItem(storageKey) || '';
+    init: function(productCardSelector) {
+        let selectedProducts = JSON.parse(localStorage.getItem(this.storageKey)) || [];
         
-        // Применяем выделение к сохраненной категории
-        if (selectedCategory) {
-            const element = document.querySelector(`[data-category="${selectedCategory}"]`);
+        // Применяем выделение к сохраненным продуктам
+        selectedProducts.forEach(product => {
+            const element = document.querySelector(`.${productCardSelector}[data-category="${product.id}"]`);
             if (element) {
                 element.classList.add(`${productCardSelector}--selected`);
             }
-        }
+        });
 
-        // Обработчик клика по категории
+        // Обработчик клика по продукту
         document.querySelectorAll(`.${productCardSelector}`).forEach(card => {
-            card.addEventListener('click', function(e) {
+            card.addEventListener('click', (e) => {
                 e.preventDefault();
-                const category = this.dataset.category;
-                
-                // Снимаем выделение со всех категорий
-                document.querySelectorAll(`.${productCardSelector}`).forEach(c => {
-                    c.classList.remove(`${productCardSelector}--selected`);
-                });
-                
-                // Если кликнули на уже выбранную категорию - снимаем выбор
-                if (selectedCategory === category) {
-                    selectedCategory = '';
+                const categoryId = card.dataset.category;
+                const titleElement = card.closest('.product')?.querySelector('.product__title');
+                const categoryName = titleElement ? titleElement.textContent : categoryId;
+                const imageElement = card.querySelector('.product__image'); // Находим изображение
+                const imageSrc = imageElement ? imageElement.getAttribute('src') : ''; // Получаем его src
+
+                selectedProducts = JSON.parse(localStorage.getItem(this.storageKey)) || [];
+                const productIndex = selectedProducts.findIndex(p => p.id === categoryId);
+
+                if (productIndex > -1) {
+                    // Продукт уже выбран - удаляем
+                    selectedProducts.splice(productIndex, 1);
+                    card.classList.remove(`${productCardSelector}--selected`);
                 } else {
-                    // Иначе выбираем новую категорию
-                    this.classList.add(`${productCardSelector}--selected`);
-                    selectedCategory = category;
+                    // Продукт не выбран - добавляем объект с id, name и imgSrc
+                    selectedProducts.push({ id: categoryId, name: categoryName, imgSrc: imageSrc });
+                    card.classList.add(`${productCardSelector}--selected`);
                 }
                 
-                // Сохраняем выбранную категорию
-                localStorage.setItem(storageKey, selectedCategory);
+                // Сохраняем обновленный список
+                localStorage.setItem(this.storageKey, JSON.stringify(selectedProducts));
             });
         });
     },
