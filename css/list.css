@@ -180,4 +180,10 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Стили для модального окна рецепта */
+#recipe-modal .modal-content {
+    background-color: #FBEEDE; /* Цвет фона модального окна */
+    /* Другие стили для .modal-content можно добавить здесь */
 } 

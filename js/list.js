@@ -6,36 +6,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const productListContainer = document.getElementById('selected-products-list');
     const recipeListUl = document.getElementById('recipe-list-ul');
 
-    // --- Данные о рецептах (ВОЗВРАЩЕНА СТАРАЯ СТРУКТУРА!) ---
+    // --- Данные о рецептах (НОВЫЙ НАБОР) ---
     const allRecipes = [
-        { category: 'snack', title: 'Рулетики из баклажанов с творогом и чесноком', requiredIngredients: ['cottage_cheese', 'vegetable_oil'], fullRecipe: 'Рецепт рулетиков...' },
-        { category: 'snack', title: 'Фаршированные яйца с сыром и морковью', requiredIngredients: ['egg', 'cheese', 'carrot'], fullRecipe: 'Рецепт фаршированных яиц...' },
-        { category: 'snack', title: 'Салат с курицей, яблоками и сметаной', requiredIngredients: ['chicken', 'apple', 'sour_cream'], fullRecipe: 'Рецепт салата...' },
-        { category: 'snack', title: 'Холодная закуска из тофу и фасоли с лимонным соусом', requiredIngredients: ['tofu', 'beans', 'lemon'], fullRecipe: 'Рецепт закуски из тофу...' },
-        { category: 'drink', title: 'Бананово-молочный коктейль с мёдом', requiredIngredients: ['banana', 'milk', 'honey'], fullRecipe: 'Рецепт коктейля...' },
-        { category: 'drink', title: 'Освежающий лимонад с мёдом', requiredIngredients: ['lemon', 'honey'], fullRecipe: 'Рецепт лимонада...' },
-        { category: 'drink', title: 'Яблочный смузи с творогом', requiredIngredients: ['apple', 'cottage_cheese', 'milk'], fullRecipe: 'Рецепт смузи...' },
-        { category: 'drink', title: 'Морковно-лимонный фреш', requiredIngredients: ['carrot', 'lemon'], fullRecipe: 'Рецепт фреша...' },
-        { category: 'dessert', title: 'Запечённые яблоки с мёдом и творогом', requiredIngredients: ['apple', 'honey', 'cottage_cheese'], fullRecipe: 'Рецепт запеченных яблок...' },
-        { category: 'dessert', title: 'Банановый пудинг с молоком', requiredIngredients: ['banana', 'milk', 'egg'], fullRecipe: 'Рецепт пудинга...' },
-        { category: 'dessert', title: 'Лимонный крем с творогом', requiredIngredients: ['lemon', 'cottage_cheese', 'egg'], fullRecipe: 'Рецепт крема...' },
-        { category: 'dessert', title: 'Морковный десерт с мёдом', requiredIngredients: ['carrot', 'honey'], fullRecipe: 'Рецепт морковного десерта...' },
-        { category: 'soup', title: 'Куриный суп с картофелем и морковью', requiredIngredients: ['chicken', 'potato', 'carrot', 'onion'], fullRecipe: 'Рецепт куриного супа...' },
-        { category: 'soup', title: 'Суп из фасоли с томатом и чесноком', requiredIngredients: ['beans', 'onion', 'vegetable_oil'], fullRecipe: 'Рецепт супа из фасоли...' },
-        { category: 'soup', title: 'Рыбный суп из нежирной рыбы с картошкой', requiredIngredients: ['low-fat_fish', 'potato', 'onion'], fullRecipe: 'Рецепт рыбного супа...' },
-        { category: 'soup', title: 'Суп-пюре из моркови и молока', requiredIngredients: ['carrot', 'milk', 'vegetable_oil'], fullRecipe: 'Рецепт супа-пюре...' },
-        { category: 'main', title: 'Свинина, тушёная с луком и морковью', requiredIngredients: ['pork', 'onion', 'carrot'], fullRecipe: 'Рецепт свинины...' },
-        { category: 'main', title: 'Запечённая куриная грудка с сыром и сметаной', requiredIngredients: ['chicken', 'cheese', 'sour_cream'], fullRecipe: 'Рецепт куриной грудки...' },
-        { category: 'main', title: 'Тушёная баранина с картошкой и луком', requiredIngredients: ['mutton', 'potato', 'onion'], fullRecipe: 'Рецепт баранины...' },
-        { category: 'main', title: 'Жирная рыба, запечённая с лимоном', requiredIngredients: ['bold_fish', 'lemon'], fullRecipe: 'Рецепт жирной рыбы...' },
-        { category: 'garnish', title: 'Картофельное пюре с молоком', requiredIngredients: ['potato', 'milk'], fullRecipe: 'Рецепт пюре...' },
-        { category: 'garnish', title: 'Гречка с жареным луком', requiredIngredients: ['buckwheat', 'onion', 'vegetable_oil'], fullRecipe: 'Рецепт гречки...' },
-        { category: 'garnish', title: 'Рис с морковью и специями', requiredIngredients: ['rice', 'carrot', 'vegetable_oil'], fullRecipe: 'Рецепт риса...' },
-        { category: 'garnish', title: 'Макароны с сыром', requiredIngredients: ['pasta', 'cheese', 'vegetable_oil'], fullRecipe: 'Рецепт макарон...' },
-        { category: 'bakery', title: 'Сырники из творога', requiredIngredients: ['cottage_cheese', 'egg', 'honey'], fullRecipe: 'Рецепт сырников...' },
-        { category: 'bakery', title: 'Банановые маффины', requiredIngredients: ['banana', 'egg', 'vegetable_oil'], fullRecipe: 'Рецепт маффинов...' },
-        { category: 'bakery', title: 'Пирог с яблоками и сметаной', requiredIngredients: ['apple', 'sour_cream', 'egg'], fullRecipe: 'Рецепт пирога...' },
-        { category: 'bakery', title: 'Лимонный кекс', requiredIngredients: ['lemon', 'egg', 'vegetable_oil'], fullRecipe: 'Рецепт кекса...' } 
+        // Закуска
+        { category: 'snack', title: 'Творожные сырники с медом', requiredIngredients: ['cottage_cheese', 'egg', 'flour', 'honey'], fullRecipe: 'Рецепт сырников...' },
+        { category: 'snack', title: 'Фасоль с луком', requiredIngredients: ['beans', 'onion', 'flour'], fullRecipe: 'Рецепт фасоли с луком...' },
+        { category: 'snack', title: 'Яблочные оладьи', requiredIngredients: ['apple', 'flour', 'egg'], fullRecipe: 'Рецепт яблочных оладий...' },
+        { category: 'snack', title: 'Куриные рулетики с сыром', requiredIngredients: ['chicken', 'cheese', 'flour'], fullRecipe: 'Рецепт куриных рулетиков...' },
+        
+        // Напиток
+        { category: 'drink', title: 'Лимонный напиток с медом', requiredIngredients: ['lemon', 'honey'], fullRecipe: 'Рецепт лимонного напитка...' }, // Вода проигнорирована
+        { category: 'drink', title: 'Молочный коктейль с медом', requiredIngredients: ['milk', 'honey'], fullRecipe: 'Рецепт молочного коктейля...' },
+        { category: 'drink', title: 'Яблочный сок (свежевыжатый)', requiredIngredients: ['apple'], fullRecipe: 'Рецепт яблочного сока...' },
+        { category: 'drink', title: 'Рисовый напиток с лимоном', requiredIngredients: ['rice', 'lemon'], fullRecipe: 'Рецепт рисового напитка...' }, // Вода проигнорирована
+
+        // Десерт
+        { category: 'dessert', title: 'Яблочный пирог с медом', requiredIngredients: ['apple', 'flour', 'egg', 'honey'], fullRecipe: 'Рецепт яблочного пирога...' },
+        { category: 'dessert', title: 'Творожная запеканка с яблоками', requiredIngredients: ['cottage_cheese', 'egg', 'flour', 'apple'], fullRecipe: 'Рецепт творожной запеканки...' },
+        { category: 'dessert', title: 'Гречневые печенья с медом', requiredIngredients: ['buckwheat', 'flour', 'honey', 'egg'], fullRecipe: 'Рецепт гречневых печений...' },
+        { category: 'dessert', title: 'Морковные кексы с медом', requiredIngredients: ['carrot', 'flour', 'honey', 'egg'], fullRecipe: 'Рецепт морковных кексов...' },
+
+        // Основное блюдо
+        { category: 'main', title: 'Говядина с картофелем и морковью', requiredIngredients: ['beef', 'potato', 'carrot', 'flour'], fullRecipe: 'Рецепт говядины...' },
+        { category: 'main', title: 'Курица с картошкой и луком', requiredIngredients: ['chicken', 'potato', 'onion', 'flour'], fullRecipe: 'Рецепт курицы с картошкой...' },
+        { category: 'main', title: 'Свинина с рисом', requiredIngredients: ['pork', 'rice', 'flour'], fullRecipe: 'Рецепт свинины с рисом...' },
+        { category: 'main', title: 'Жирная рыба с картофелем и морковью', requiredIngredients: ['bold_fish', 'potato', 'carrot', 'flour'], fullRecipe: 'Рецепт жирной рыбы...' },
+
+        // Гарнир
+        { category: 'garnish', title: 'Гречка с маслом', requiredIngredients: ['buckwheat', 'flour'], fullRecipe: 'Рецепт гречки с маслом...' },
+        { category: 'garnish', title: 'Рис с морковью', requiredIngredients: ['rice', 'carrot', 'flour'], fullRecipe: 'Рецепт риса с морковью...' },
+        { category: 'garnish', title: 'Картофель, запеченный с луком', requiredIngredients: ['potato', 'onion', 'flour'], fullRecipe: 'Рецепт запеченного картофеля...' },
+        { category: 'garnish', title: 'Фасоль с картошкой', requiredIngredients: ['beans', 'potato', 'flour'], fullRecipe: 'Рецепт фасоли с картошкой...' },
+
+        // Выпечка
+        { category: 'bakery', title: 'Банановые маффины', requiredIngredients: ['banana', 'flour', 'egg', 'honey'], fullRecipe: 'Рецепт банановых маффинов...' },
+        { category: 'bakery', title: 'Яблочные пирожки', requiredIngredients: ['apple', 'flour', 'egg'], fullRecipe: 'Рецепт яблочных пирожков...' },
+        { category: 'bakery', title: 'Творожные лепешки с медом', requiredIngredients: ['cottage_cheese', 'flour', 'egg', 'honey'], fullRecipe: 'Рецепт творожных лепешек...' },
+        { category: 'bakery', title: 'Картофельные пирожки с курицей', requiredIngredients: ['potato', 'chicken', 'flour'], fullRecipe: 'Рецепт картофельных пирожков...' }
     ];
     // ---------------------------------------------------------------------------
 
@@ -162,10 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- Функции для модального окна (ВОЗВРАЩЕНА СТАРАЯ ВЕРСИЯ) ---
+    // --- Функции для модального окна (ОБНОВЛЕНА для лучшего отображения) ---
     function showRecipeModal(event) {
         const clickedTitle = event.target.closest('li').dataset.recipeTitle;
         const recipeData = allRecipes.find(r => r.title === clickedTitle);
+        // Получаем выбранные продукты из localStorage еще раз или используем переменную `selectedProducts` из внешней области видимости
+        const currentSelectedProducts = JSON.parse(localStorage.getItem('selectedProducts')) || []; 
 
         if (recipeData) {
             const modal = document.getElementById('recipe-modal');
@@ -174,9 +183,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (modal && modalTitle && modalContent) {
                 modalTitle.textContent = recipeData.title;
-                // Форматируем простой список ID ингредиентов
-                const ingredientsText = recipeData.requiredIngredients.join(', '); 
-                modalContent.textContent = `Ингредиенты: ${ingredientsText}\n\n${recipeData.fullRecipe}`; // Выводим ID + текст рецепта (плейсхолдер)
+
+                // Формируем HTML для содержимого
+                let contentHtml = '<h3>Необходимые ингредиенты:</h3><ul>';
+                recipeData.requiredIngredients.forEach(reqId => {
+                    const product = currentSelectedProducts.find(p => p.id === reqId);
+                    const productName = product ? product.name : reqId; // Используем имя, если нашли, иначе ID
+                    contentHtml += `<li>${productName}</li>`;
+                });
+                contentHtml += '</ul>';
+
+                contentHtml += '<hr><h3>Рецепт приготовления:</h3>'; // Разделитель и заголовок для рецепта
+                // Добавляем сам рецепт (пока это плейсхолдер)
+                contentHtml += `<p style="white-space: pre-wrap;">${recipeData.fullRecipe.replace(/\n/g, '<br>')}</p>`; // Используем pre-wrap для сохранения переносов строк
+
+                modalContent.innerHTML = contentHtml; // Используем innerHTML
                 modal.style.display = 'block';
             }
         }
