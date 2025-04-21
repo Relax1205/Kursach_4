@@ -1,9 +1,9 @@
 /* Стили для списка выбранных продуктов на list.html */
 .selected-list {
     position: absolute;
-    left: 25%; /* Сдвигаем на правую страницу */
-    top: 25%; /* Немного ниже */
-    width: 30%; /* Чуть шире */
+    left: 26%; /* Сдвигаем на правую страницу */
+    top: 27%; /* Немного ниже */
+    width: 20%; /* Чуть шире */
     max-height: 65%;
     overflow-y: auto;
     background-color: transparent; /* Убираем фон */
@@ -15,21 +15,21 @@
     color: #4a3a2a; /* Темно-коричневый цвет текста */
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Легкая светлая тень для читаемости */
     z-index: 10;
-    transform: rotate(-7deg); /* Добавляем наклон */
+    transform: rotate(-8deg); /* Добавляем наклон */
 }
 
 .selected-list h2, .selected-list h3 {
     font-family: 'Bad Script', cursive;
     color: #4a3a2a;
     margin-top: 0;
-    margin-bottom: 10px;
     text-align: center; /* Центрируем заголовки */
+    font-size: 1.1em; /* Уменьшаем размер заголовков */
 }
 
 #selected-category p {
     font-weight: bold;
-    margin-bottom: 15px;
     text-align: center;
+    font-size: 1em; /* Уменьшаем размер шрифта категории */
 }
 
 #selected-products-list {
@@ -43,6 +43,12 @@
     border-bottom: 1px dashed rgba(74, 58, 42, 0.5); /* Пунктирная линия */
     display: flex; /* Для выравнивания картинки и текста */
     align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: space-between; /* Разносим название и картинку по краям */
+}
+
+/* Спан для названия продукта */
+.product-name-text {
+    /* flex-grow: 1; Убираем, т.к. используем space-between */
 }
 
 #selected-products-list li:last-child {
@@ -55,7 +61,10 @@
     height: 30px;
     object-fit: cover; /* Масштабируем */
     border-radius: 50%; /* Круглые */
-    margin-right: 10px; /* Отступ справа */
-    vertical-align: middle; /* Дополнительное выравнивание */
+    margin-right: 0; /* Убираем правый отступ */
+    /* margin-left: 10px; Убираем левый отступ */
+    /* vertical-align: middle; Убираем, т.к. есть align-items: center */
     border: 1px solid rgba(74, 58, 42, 0.3); /* Тонкая рамка */
+    /* order: 1; Убираем, т.к. изменили порядок в DOM */
+    flex-shrink: 0; /* Предотвращаем сжатие картинки */
 } 

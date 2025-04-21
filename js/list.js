@@ -34,18 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedProducts.forEach(product => {
                 const listItem = document.createElement('li');
                 
+                // Создаем span для текста ПЕРЕД изображением
+                const nameSpan = document.createElement('span');
+                nameSpan.classList.add('product-name-text'); // Класс для стилизации
+                nameSpan.textContent = product.name;
+                listItem.appendChild(nameSpan); // Добавляем span первым
+
                 // Добавляем изображение, если есть src
-                if (product.imgSrc) {
+                if (product.imgSrc && product.imgSrc.trim() !== '') { // Добавил проверку на непустой src
                     const img = document.createElement('img');
                     img.src = product.imgSrc;
                     img.alt = product.name; // Добавляем alt текст
                     img.classList.add('selected-product-image'); // Класс для стилизации
-                    listItem.appendChild(img);
+                    // Добавляем title для отладки - при наведении покажет путь
+                    img.title = product.imgSrc; 
+                    listItem.appendChild(img); // Добавляем img вторым
+                } else {
+                    // Если нет imgSrc, можно добавить плейсхолдер или ничего не делать
+                    console.warn(`Image source missing for product: ${product.name}`);
                 }
-                
-                // Добавляем текстовый узел с названием
-                const textNode = document.createTextNode(product.name);
-                listItem.appendChild(textNode);
                 
                 productListContainer.appendChild(listItem);
             });
