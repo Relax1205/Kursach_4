@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Composer - Продукты животного происхождения</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <script src="js/products.js"></script>
+    <script src="js/animal_origin.js"></script>
+</head>
+<body class="page">
+    <nav class="nav">
+        <a href="index.html" class="nav__logo-link">
+            <img src="public/icons/logo.png" alt="Recipe Composer Logo" class="nav__logo">
+        </a>
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="about.html" class="nav__link">О наших рецептах</a>
+        <a href="favorites.html" class="nav__link">Избранное</a>
+    </nav>
+
+    <main class="product-page">
+        <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="product-page__book-background">
+        <div class="product-page__container">
+            <!-- Говядина -->
+            <div class="product product--position-1">
+                <a href="#" class="product__card" data-category="Egg">
+                    <img src="./public/food/animal_origin/egg.png" alt="Яйца" class="product__image">
+                </a>
+                <h2 class="product__title">Яйца</h2>
+            </div>
+
+            <!-- Курица -->
+            <div class="product product--position-2">
+                <a href="#" class="product__card" data-category="Milk">
+                    <img src="./public/food/animal_origin/milk.png" alt="Молоко" class="product__image">
+                </a>
+                <h2 class="product__title">Молоко</h2>
+            </div>
+
+            <!-- Баранина -->
+            <div class="product product--position-3">
+                <a href="#" class="product__card" data-category="Cheese">
+                    <img src="./public/food/animal_origin/cheese.png"  alt="Сыр" class="product__image">
+                </a>
+                <h2 class="product__title">Сыр</h2>
+            </div>
+
+            <div class="product product--position-4">
+                <a href="#" class="product__card" data-category="Cottage cheese">
+                    <img src="./public/food/animal_origin/cottage_cheese.png" alt="Творог" class="product__image">
+                </a>
+                <h2 class="product__title">Творог</h2>
+            </div>
+
+            <div class="product product--position-5">
+                <a href="#" class="product__card" data-category="Honey">
+                    <img src="./public/food/animal_origin/honey.png" alt="Мёд" class="product__image">
+                </a>
+                <h2 class="product__title">Мёд</h2>
+            </div>
+
+            <div class="product product--position-6">
+                <a href="#" class="product__card" data-category="Sour cream">
+                    <img src="./public/food/animal_origin/sour_cream.png" alt="Sour cream" class="product__image">
+                </a>
+                <h2 class="product__title">Сметана</h2>
+            </div>
+            
+            <!-- Стрелка для возврата к категориям -->
+            <a href="categories.html" class="nav-arrow nav-arrow--left">
+                <div class="nav-arrow__symbol">›</div>
+            </a>
+            
+            <!-- Стрелка для перехода к продуктам растительного происхождения -->
+            <a href="plant_origin.html" class="nav-arrow nav-arrow--right">
+                <div class="nav-arrow__symbol">›</div>
+            </a>
+        </div>
+    </main>
+</body>
+</html> 
