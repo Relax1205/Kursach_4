@@ -147,16 +147,16 @@
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* 10% сверху/снизу, авто слева/справа (центрирование) */
+    margin: 10% auto;
     padding: 25px;
     border: 1px solid #888;
-    width: 60%; /* Ширина окна */
-    max-width: 700px;
+    width: 80%; /* Увеличиваем ширину окна */
+    max-width: 900px; /* Увеличиваем максимальную ширину */
     border-radius: 10px;
     position: relative;
-    font-family: Arial, sans-serif; /* Обычный шрифт для читаемости рецепта */
-    color: #333; /* Стандартный темный цвет */
-    line-height: 1.6; /* Улучшаем читаемость */
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
 }
 
 .modal-content h2 {
@@ -186,4 +186,19 @@
 #recipe-modal .modal-content {
     background-color: #FBEEDE; /* Цвет фона модального окна */
     /* Другие стили для .modal-content можно добавить здесь */
+}
+
+/* Добавляем стили для заголовков секций в модальном окне */
+.modal-section-heading {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #4a3a2a;
+}
+
+/* Добавляем стиль для выделения времени приготовления */
+#recipe-modal .modal-content strong {
+    color: #4a3a2a;
+    font-weight: bold;
 } 
