@@ -43,22 +43,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Функция обработки перехода на другую страницу
-    const handlePageTransition = function(e) {
-        e.preventDefault();
-        const targetUrl = this.getAttribute('href');
-        // Мгновенный переход без анимации
-        window.location.href = targetUrl;
-    };
-    
-    // Применяем обработчик к кнопке с мясом и стрелке
-    const meatCard = document.querySelector('.category__card[href="meat.html"]');
-    if (meatCard) {
-        meatCard.addEventListener('click', handlePageTransition);
+    // Находим стрелку для перехода к мясу
+    const nextButton = document.querySelector('.nav-arrow--right');
+    if (nextButton) {
+        nextButton.addEventListener('click', function(e) {
+            if (!selectedCategory) {
+                e.preventDefault();
+                const warningElement = document.getElementById('category-warning');
+                if (warningElement) {
+                    warningElement.textContent = 'Пожалуйста, выберите категорию перед переходом!';
+                    warningElement.style.display = 'block';
+                    setTimeout(() => {
+                        warningElement.style.display = 'none';
+                    }, 3000);
+                } else {
+                    alert('Пожалуйста, выберите категорию перед переходом!');
+                }
+            } else {
+                const targetUrl = this.getAttribute('href');
+                window.location.href = targetUrl; 
+            }
+        });
     }
     
-    const navArrow = document.querySelector('.nav-arrow--to-meat');
-    if (navArrow) {
-        navArrow.addEventListener('click', handlePageTransition);
+    // Удаляем старый обработчик для карточки 'meat'
+    const meatCard = document.querySelector('.category__card[href="meat.html"]');
+    if (meatCard) {
+        // Так как обработчик был простой анонимной функцией, его нельзя удалить так просто.
+        // Но так как он больше не нужен и элемент не существует, это не проблема.
+        // Если бы существовал элемент meat.html как категория, нужно было бы переделать
     }
 }); 
