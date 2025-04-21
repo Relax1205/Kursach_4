@@ -34,25 +34,30 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedProducts.forEach(product => {
                 const listItem = document.createElement('li');
                 
-                // Создаем span для текста ПЕРЕД изображением
-                const nameSpan = document.createElement('span');
-                nameSpan.classList.add('product-name-text'); // Класс для стилизации
-                nameSpan.textContent = product.name;
-                listItem.appendChild(nameSpan); // Добавляем span первым
-
-                // Добавляем изображение, если есть src
-                if (product.imgSrc && product.imgSrc.trim() !== '') { // Добавил проверку на непустой src
+                // Добавляем изображение ПЕРВЫМ, если есть src
+                if (product.imgSrc && product.imgSrc.trim() !== '') { 
                     const img = document.createElement('img');
                     img.src = product.imgSrc;
-                    img.alt = product.name; // Добавляем alt текст
-                    img.classList.add('selected-product-image'); // Класс для стилизации
-                    // Добавляем title для отладки - при наведении покажет путь
+                    img.alt = product.name;
+                    img.classList.add('selected-product-image');
                     img.title = product.imgSrc; 
-                    listItem.appendChild(img); // Добавляем img вторым
+                    listItem.appendChild(img); // Добавляем img первым
                 } else {
-                    // Если нет imgSrc, можно добавить плейсхолдер или ничего не делать
                     console.warn(`Image source missing for product: ${product.name}`);
+                    // Можно добавить плейсхолдер для выравнивания, если нужно
+                    const placeholder = document.createElement('span');
+                    placeholder.style.display = 'inline-block';
+                    placeholder.style.width = '30px'; // Ширина как у картинки
+                    placeholder.style.height = '30px';
+                    placeholder.style.marginRight = '10px'; // Отступ как у картинки
+                    listItem.appendChild(placeholder);
                 }
+
+                // Создаем span для текста ВТОРЫМ
+                const nameSpan = document.createElement('span');
+                nameSpan.classList.add('product-name-text');
+                nameSpan.textContent = product.name;
+                listItem.appendChild(nameSpan); // Добавляем span вторым
                 
                 productListContainer.appendChild(listItem);
             });
