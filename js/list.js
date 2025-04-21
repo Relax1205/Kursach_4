@@ -2,6 +2,28 @@
  * Модуль страницы списка продуктов (финальной)
  */
 document.addEventListener('DOMContentLoaded', function() {
+    // helper functions for favorites management
+    function getFavoriteRecipes() {
+        return JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
+    }
+    function saveFavoriteRecipes(recipes) {
+        localStorage.setItem('favoriteRecipes', JSON.stringify(recipes));
+    }
+    function toggleFavorite(recipeData, iconEl) {
+        const favs = getFavoriteRecipes();
+        const idx = favs.findIndex(r => r.title === recipeData.title);
+        if (idx > -1) {
+            favs.splice(idx, 1);
+            iconEl.classList.remove('favorited');
+            iconEl.innerHTML = '♡';
+        } else {
+            favs.push(recipeData);
+            iconEl.classList.add('favorited');
+            iconEl.innerHTML = '♥';
+        }
+        saveFavoriteRecipes(favs);
+    }
+
     const categoryContainer = document.getElementById('selected-category');
     const productListContainer = document.getElementById('selected-products-list');
     const recipeListUl = document.getElementById('recipe-list-ul');
@@ -706,33 +728,37 @@ document.addEventListener('DOMContentLoaded', function() {
         if (suitableRecipes.length > 0) {
             suitableRecipes.forEach(recipe => {
                 const li = document.createElement('li');
+                li.style.position = 'relative'; // for heart icon
                 li.style.cursor = 'pointer';
                 li.dataset.recipeTitle = recipe.title;
                 li.addEventListener('click', showRecipeModal);
 
-                // Создаем элемент для названия
+                // Название рецепта
                 const titleElement = document.createElement('strong');
                 titleElement.textContent = recipe.title;
                 li.appendChild(titleElement);
 
-                // Создаем элемент для ингредиентов
+                // Ингредиенты
                 const ingredientsElement = document.createElement('small');
-                ingredientsElement.classList.add('recipe-ingredients'); // Класс для стилизации
-
-                // Пытаемся получить названия ингредиентов на русском языке
+                ingredientsElement.classList.add('recipe-ingredients');
                 const ingredientNames = recipe.requiredIngredients.map(ing => {
-                    // Сначала ищем в выбранных продуктах
                     const foundProduct = selectedProducts.find(p => p.id === ing);
-                    // Если нашли в выбранных, используем имя оттуда
-                    if (foundProduct) {
-                        return foundProduct.name;
-                    }
-                    // Иначе берем из словаря переводов
-                    return ingredientTranslations[ing] || ing;
+                    return foundProduct ? foundProduct.name : ingredientTranslations[ing] || ing;
                 });
-                
                 ingredientsElement.textContent = `Ингредиенты: ${ingredientNames.join(', ')}`;
                 li.appendChild(ingredientsElement);
+
+                // Heart icon for favorites
+                const favIcon = document.createElement('span');
+                favIcon.classList.add('favorite-icon');
+                const isFav = getFavoriteRecipes().some(r => r.title === recipe.title);
+                favIcon.innerHTML = isFav ? '♥' : '♡';
+                if (isFav) favIcon.classList.add('favorited');
+                favIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleFavorite(recipe, favIcon);
+                });
+                li.appendChild(favIcon);
 
                 recipeListUl.appendChild(li);
             });

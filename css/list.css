@@ -201,4 +201,18 @@
 #recipe-modal .modal-content strong {
     color: #4a3a2a;
     font-weight: bold;
+}
+
+/* Стили для иконки избранного */
+.favorite-icon {
+    position: absolute;
+    right: 0;
+    top: 24%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #aaa;
+    cursor: pointer;
+}
+.favorite-icon.favorited {
+    color: orange;
 } 
