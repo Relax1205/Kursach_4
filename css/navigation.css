@@ -32,8 +32,6 @@
     transform: rotate(345deg);
 }
 
-
-/* Левосторонние стрелки */
 .nav-arrow--to-categories .nav-arrow__symbol, 
 .nav-arrow--to-meat .nav-arrow__symbol {
     transform: rotate(175deg);
