@@ -49,6 +49,21 @@
     top: 54%;
 }
 
+.product--position-4 {
+    left: 64%;
+    top:25%;
+}
+
+.product--position-5 {
+    left: 66%;
+    top: 72%;
+}
+
+.product--position-6 {
+    left: 52%;
+    top: 52%;
+}
+
 .product__card {
     display: flex;
     align-items: center;
