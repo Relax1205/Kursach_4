@@ -2,7 +2,13 @@
  * Модуль страницы категорий
  */
 document.addEventListener('DOMContentLoaded', function() {
-    // Загружаем сохраненную выбранную категорию
+    // --- Очистка предыдущего выбора при загрузке страницы категорий ---
+    localStorage.removeItem('selectedFoodCategory');
+    localStorage.removeItem('selectedProducts');
+    console.log('localStorage очищен при загрузке categories.html'); // Для отладки
+    // --------------------------------------------------------------------
+
+    // Загружаем сохраненную выбранную категорию (теперь всегда будет пустой или null)
     let selectedCategory = localStorage.getItem('selectedFoodCategory') || '';
     
     // Применяем выделение к сохраненной категории
