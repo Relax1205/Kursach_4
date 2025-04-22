@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Translation map for ingredient IDs
     const ingredientTranslations = {
         'cottage_cheese': 'Творог', 'egg': 'Яйца', 'flour': 'Мука', 'honey': 'Мёд',
         'beans': 'Фасоль', 'onion': 'Лук', 'oil': 'Масло', 'apple': 'Яблоки',
@@ -8,8 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'beef': 'Говядина', 'potato': 'Картофель', 'pork': 'Свинина', 'bold_fish': 'Жирная рыба',
         'banana': 'Бананы'
     };
-
-    // Favorites management
     function getFavoriteRecipes() {
         return JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
     }
@@ -28,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const favListUl = document.getElementById('favorites-list-ul');
     const favorites = getFavoriteRecipes();
-
-    // Populate favorites list
     if (favListUl) {
         if (favorites.length > 0) {
             favorites.forEach(recipe => {
@@ -38,20 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 li.style.cursor = 'pointer';
                 li.dataset.recipeTitle = recipe.title;
                 li.addEventListener('click', showRecipeModal);
-
-                // Title
                 const titleEl = document.createElement('strong');
                 titleEl.textContent = recipe.title;
                 li.appendChild(titleEl);
 
-                // Ingredients summary
                 const ingEl = document.createElement('small');
                 ingEl.classList.add('recipe-ingredients');
                 const ingNames = recipe.requiredIngredients.map(id => ingredientTranslations[id] || id);
                 ingEl.textContent = `Ингредиенты: ${ingNames.join(', ')}`;
                 li.appendChild(ingEl);
 
-                // Heart icon
                 const heart = document.createElement('span');
                 heart.classList.add('favorite-icon', 'favorited');
                 heart.innerHTML = '♥';
@@ -68,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Modal functionality (same as in list.js)
     function showRecipeModal(event) {
         const title = event.target.closest('li').dataset.recipeTitle;
         const recipe = getFavoriteRecipes().find(r => r.title === title);

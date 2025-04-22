@@ -23,38 +23,30 @@
     <main class="product-page">
         <img src="./public/backgrounds/book.png" alt="Книга с блюдами" class="product-page__book-background">
         <div class="product-page__container">
-            <!-- Контейнер для отображения выбранных продуктов -->
             <div id="selected-list-container" class="selected-list">
                 <h2>Ваш выбор:</h2>
                 <div id="selected-category"></div>
                 <h3>Продукты:</h3>
                 <ul id="selected-products-list"></ul>
             </div>
-
-            <!-- Контейнер для отображения предлагаемых рецептов -->
             <div id="recipe-suggestions" class="recipe-list">
                 <h2>Рецепты:</h2>
                 <ul id="recipe-list-ul">
-                    <!-- Сюда будут добавляться рецепты -->
                     <li>Рецепт 1...</li>
                     <li>Рецепт 2...</li>
                     <li>Рецепт 3...</li>
                 </ul>
             </div>
-            
-            <!-- Стрелка для возврата к продуктам растительного происхождения -->
             <a href="plant_origin.html" class="nav-arrow nav-arrow--left">
                 <div class="nav-arrow__symbol">›</div>
             </a>
         </div>
     </main>
-
-    <!-- Модальное окно для рецептов -->
     <div id="recipe-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close-button" id="modal-close-button">&times;</span>
             <h2 id="modal-recipe-title">Название Рецепта</h2>
-            <p id="modal-recipe-content" style="white-space: pre-wrap;">Содержимое рецепта...</p> <!-- Добавлен инлайн стиль для переносов -->
+            <p id="modal-recipe-content" style="white-space: pre-wrap;">Содержимое рецепта...</p>
         </div>
     </div>
 

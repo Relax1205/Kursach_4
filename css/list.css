@@ -1,56 +1,56 @@
 /* Стили для списка выбранных продуктов на list.html */
 .selected-list {
     position: absolute;
-    left: 26%; /* Сдвигаем на правую страницу */
-    top: 27%; /* Немного ниже */
-    width: 20%; /* Чуть шире */
-    height: 70%; /* Задаем высоту блока */
-    background-color: transparent; /* Убираем фон */
+    left: 26%;
+    top: 27%;
+    width: 20%;
+    height: 70%;
+    background-color: transparent;
     padding: 15px;
-    border-radius: 0; /* Убираем скругление */
-    box-shadow: none; /* Убираем тень блока */
-    font-family: 'Bad Script', cursive; /* Используем основной шрифт */
-    font-size: 1.2em; /* Немного увеличим шрифт */
-    color: #4a3a2a; /* Темно-коричневый цвет текста */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Легкая светлая тень для читаемости */
+    border-radius: 0;
+    box-shadow: none;
+    font-family: 'Bad Script', cursive;
+    font-size: 1.2em;
+    color: #4a3a2a;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
     z-index: 10;
-    transform: rotate(-7deg); /* Добавляем наклон */
-    display: flex; /* Добавляем flex */
-    flex-direction: column; /* Добавляем направление колонки */
+    transform: rotate(-7deg);
+    display: flex;
+    flex-direction: column;
 }
 
 .selected-list h2, .selected-list h3 {
     font-family: 'Bad Script', cursive;
     color: #4a3a2a;
     margin-top: 0;
-    margin-bottom: 5px; /* Убираем нижний отступ у заголовков */
-    text-align: center; /* Центрируем заголовки */
-    font-size: 1.5em; /* Уменьшаем размер заголовков */
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 #selected-category p {
     font-weight: bold;
     text-align: center;
-    font-size: 1em; /* Уменьшаем размер шрифта категории */
-    margin-top: 0; /* Убираем верхний отступ у категории */
-    margin-bottom: 10px; /* Оставляем нижний отступ перед списком продуктов */
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 #selected-products-list {
     list-style: none;
-    padding: 0 5px 0 0; /* Добавляем небольшой отступ справа для полосы прокрутки */
+    padding: 0 5px 0 0;
     margin: 0;
-    overflow-y: auto; /* Добавляем скролл к списку */
-    flex-grow: 1; /* Позволяем списку занять доступное место */
-    min-height: 0; /* Важно для корректной работы flex-grow и overflow */
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
 }
 
 #selected-products-list li {
-    padding: 8px 0; /* Увеличим отступ */
-    border-bottom: 1px dashed rgba(74, 58, 42, 0.5); /* Пунктирная линия */
-    display: flex; /* Для выравнивания картинки и текста */
-    align-items: center; /* Вертикальное выравнивание по центру */
-    justify-content: flex-start; /* Выравниваем по левому краю */
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(74, 58, 42, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 
@@ -58,24 +58,21 @@
     border-bottom: none;
 }
 
-/* Стили для изображений в списке */
+
 .selected-product-image {
-    width: 30px; /* Маленький размер */
+    width: 30px;
     height: 30px;
-    object-fit: cover; /* Масштабируем */
-    border-radius: 50%; /* Круглые */
-    margin-left: 0; /* Убираем левый отступ */
-    margin-right: 10px; /* Добавляем правый отступ */
-    /* vertical-align: middle; */
-    border: 1px solid rgba(74, 58, 42, 0.3); /* Тонкая рамка */
-    /* order: 1; */
-    flex-shrink: 0; /* Предотвращаем сжатие картинки */
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 0;
+    margin-right: 10px;
+    border: 1px solid rgba(74, 58, 42, 0.3);
+    flex-shrink: 0;
 }
 
-/* Стили для списка предлагаемых рецептов на list.html */
 .recipe-list {
     position: absolute;
-    left: 53%; /* Размещаем справа */
+    left: 53%;
     top: 20%;
     width: 20%;
     height: 65%;
@@ -86,7 +83,7 @@
     color: #4a3a2a;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
     z-index: 10;
-    transform: rotate(-8deg); /* Небольшой наклон в другую сторону */
+    transform: rotate(-8deg);
     display: flex;
     flex-direction: column;
     box-shadow: none;
@@ -112,37 +109,36 @@
 }
 
 #recipe-list-ul li {
-    padding: 8px 0; /* Увеличим вертикальный отступ */
+    padding: 8px 0;
     border-bottom: 1px dashed rgba(74, 58, 42, 0.5);
-    display: flex; /* Используем flex */
-    flex-direction: column; /* Располагаем название и ингредиенты друг под другом */
-    align-items: flex-start; /* Выравниваем по левому краю */
-    cursor: pointer; /* Добавляем курсор, т.к. JS его сбрасывает */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
 }
 
-/* Стиль для списка ингредиентов под названием рецепта */
 .recipe-ingredients {
-    font-size: 0.8em; /* Меньший шрифт */
-    color: #6c584c; /* Чуть светлее основного */
-    margin-top: 3px; /* Небольшой отступ сверху */
-    display: block; /* Убедимся, что это блочный элемент */
+    font-size: 0.8em;
+    color: #6c584c;
+    margin-top: 3px;
+    display: block;
 }
 
 #recipe-list-ul li:last-child {
     border-bottom: none;
 }
 
-/* Стили для модального окна */
+
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Остается на месте при прокрутке */
-    z-index: 100; /* Поверх всего */
+    display: none;
+    position: fixed;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Прокрутка, если контент большой */
-    background-color: rgba(0,0,0,0.6); /* Полупрозрачный черный фон */
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
 }
 
 .modal-content {
@@ -150,8 +146,8 @@
     margin: 10% auto;
     padding: 25px;
     border: 1px solid #888;
-    width: 80%; /* Увеличиваем ширину окна */
-    max-width: 900px; /* Увеличиваем максимальную ширину */
+    width: 80%;
+    max-width: 900px;
     border-radius: 10px;
     position: relative;
     font-family: Arial, sans-serif;
@@ -160,7 +156,7 @@
 }
 
 .modal-content h2 {
-    font-family: 'Bad Script', cursive; /* Заголовок в стиле сайта */
+    font-family: 'Bad Script', cursive;
     color: #4a3a2a;
     text-align: center;
     margin-top: 0;
@@ -182,13 +178,12 @@
     cursor: pointer;
 }
 
-/* Стили для модального окна рецепта */
+
 #recipe-modal .modal-content {
-    background-color: #FBEEDE; /* Цвет фона модального окна */
-    /* Другие стили для .modal-content можно добавить здесь */
+    background-color: #FBEEDE;
 }
 
-/* Добавляем стили для заголовков секций в модальном окне */
+
 .modal-section-heading {
     font-weight: bold;
     margin-top: 15px;
@@ -197,13 +192,13 @@
     color: #4a3a2a;
 }
 
-/* Добавляем стиль для выделения времени приготовления */
+
 #recipe-modal .modal-content strong {
     color: #4a3a2a;
     font-weight: bold;
 }
 
-/* Стили для иконки избранного */
+
 .favorite-icon {
     position: absolute;
     right: 0;

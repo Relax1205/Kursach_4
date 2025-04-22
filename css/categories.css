@@ -135,19 +135,18 @@
     font-family: 'Bad Script', Arial, sans-serif;
 }
 
-/* Стили для сообщения о необходимости выбора категории */
 .warning-message {
     position: absolute;
-    top: 20px; /* Небольшой отступ сверху */
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(255, 193, 7, 0.9); /* Желтый фон с прозрачностью */
+    background-color: rgba(255, 193, 7, 0.9);
     color: #333;
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 100; /* Поверх других элементов */
-    font-family: 'Bad Script', Arial, sans-serif; /* Используем основной шрифт */
+    z-index: 100;
+    font-family: 'Bad Script', Arial, sans-serif;
     font-size: 1.1em;
     text-align: center;
 } 

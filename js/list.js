@@ -1,8 +1,4 @@
-/**
- * Модуль страницы списка продуктов (финальной)
- */
 document.addEventListener('DOMContentLoaded', function() {
-    // helper functions for favorites management
     function getFavoriteRecipes() {
         return JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
     }
@@ -28,15 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const productListContainer = document.getElementById('selected-products-list');
     const recipeListUl = document.getElementById('recipe-list-ul');
 
-    // --- Данные о рецептах (НОВЫЙ НАБОР) ---
     const allRecipes = [
-        // Закуска
         { category: 'snack', title: 'Творожные сырники с медом', requiredIngredients: ['cottage_cheese', 'egg', 'flour', 'honey'], fullRecipe: 'Ингредиенты:\n\nТворог — 400 г\n\nЯйца — 2 шт.\n\nМука — 100 г (плюс немного для обсыпки)\n\nМёд — 2 ст. ложки\n\nСоль — 1/4 ч. ложки\n\nМасло — 1 ст. ложка (для жарки)\n\nПлан готовки:\n\nВ миске смешайте творог, яйца, муку, соль и мед. Перемешайте до получения однородной массы. Если тесто слишком жидкое, добавьте немного муки.\n\nСформируйте из теста небольшие круглые или овальные лепешки (сырники). Обваляйте их в муке с обеих сторон.\n\nРазогрейте сковороду на среднем огне, добавьте немного масла.\n\nОбжаривайте сырники с обеих сторон до золотистой корочки (по 3-4 минуты с каждой стороны).\n\nПодавайте с медом или вареньем.\n\nВремя приготовления:\n\nВремя подготовки: 10 минут\n\nВремя жарки: 10-12 минут\n\nОбщее время: 20-22 минуты' },
         { category: 'snack', title: 'Фасоль с луком', requiredIngredients: ['beans', 'onion', 'oil'], fullRecipe: 'Ингредиенты:\n\nФасоль (сухая) — 200 г\n\nЛук — 1 средняя головка\n\nМасло — 2 ст. ложки\n\nСоль и перец — по вкусу\n\nПлан готовки:\n\nЗамочите фасоль в воде на 6-8 часов или на ночь.\n\nСлейте воду, залейте фасоль свежей водой и варите на среднем огне около 1-1,5 часа до мягкости. Если используете консервированную фасоль, этот шаг можно пропустить.\n\nЛук нарежьте мелким кубиком.\n\nРазогрейте масло в сковороде и обжаривайте лук до золотистого цвета (около 5-7 минут).\n\nДобавьте вареную фасоль, посолите и поперчите по вкусу. Перемешайте и готовьте еще 5 минут.\n\nПодавайте как гарнир или самостоятельное блюдо.\n\nВремя приготовления:\n\nВремя подготовки: 5 минут (если фасоль уже замочена)\n\nВремя варки фасоли: 1-1,5 часа (если используется сухая фасоль)\n\nВремя жарки: 5-7 минут\n\nОбщее время (с учетом замачивания фасоли): 1-1,5 часа' },
         { category: 'snack', title: 'Яблочные оладьи', requiredIngredients: ['apple', 'flour', 'egg'], fullRecipe: 'Ингредиенты:\n\nЯблоки — 2 шт.\n\nМука — 150 г\n\nЯйца — 1 шт.\n\nСахар — 1 ст. ложка\n\nСоль — 1/4 ч. ложки\n\nМасло — 2 ст. ложки (для жарки)\n\nПлан готовки:\n\nЯблоки очистите от кожуры и натрите на крупной терке.\n\nВ миске смешайте натертые яблоки, муку, яйцо, сахар и соль. Замешивайте тесто до получения однородной массы.\n\nРазогрейте сковороду с маслом на среднем огне.\n\nЛожкой выкладывайте небольшие порции теста на сковороду, придавая им форму оладушек.\n\nОбжаривайте с обеих сторон до золотистой корочки (по 2-3 минуты с каждой стороны).\n\nПодавайте с медом или вареньем.\n\nВремя приготовления:\n\nВремя подготовки: 5 минут\n\nВремя жарки: 8-10 минут\n\nОбщее время: 13-15 минут' },
         { category: 'snack', title: 'Куриные рулетики с сыром', requiredIngredients: ['chicken', 'cheese', 'oil'], fullRecipe: 'Ингредиенты:\n\nКурица (филе) — 400 г\n\nСыр — 100 г\n\nМасло — 2 ст. ложки\n\nСоль и перец — по вкусу\n\nПлан готовки:\n\nКуриное филе разрежьте вдоль на 2-3 части, чтобы получились тонкие пластинки. Отбейте мясо молоточком, чтобы оно стало мягким.\n\nНа каждую пластинку куриного филе положите ломтик сыра и сверните в рулетики.\n\nРазогрейте масло в сковороде на среднем огне.\n\nОбжаривайте рулетики с каждой стороны до золотистой корочки, около 6-8 минут с каждой стороны.\n\nПодавайте рулетики с гарниром или отдельно.\n\nВремя приготовления:\n\nВремя подготовки: 10 минут\n\nВремя жарки: 12-16 минут\n\nОбщее время: 22-26 минут' },
-        
-        // Супы
         { category: 'soup', title: 'Картофельный суп с морковью и луком', requiredIngredients: ['potato', 'carrot', 'onion', 'oil', 'water'], fullRecipe: `Ингредиенты:
 
 Картофель — 4-5 средних клубней (примерно 600 г)
@@ -167,19 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Общее время: 40-45 минут` },
 
-        // Напиток
         { category: 'drink', title: 'Лимонный напиток с медом', requiredIngredients: ['lemon', 'honey', 'water'], fullRecipe: 'Ингредиенты:\n\nЛимоны — 2 шт.\n\nМёд — 2 ст. ложки (или по вкусу)\n\nВода — 1 литр (можно использовать холодную или тёплую воду, по предпочтению)\n\nПлан готовки:\n\nЛимоны тщательно помойте, затем разрежьте их пополам. Извлеките сок с помощью соковыжималки или вручную.\n\nВ кастрюле или кувшине смешайте воду с лимонным соком.\n\nДобавьте мёд и тщательно перемешайте до полного растворения.\n\nЕсли хотите, чтобы напиток был холодным, добавьте несколько кубиков льда, или охладите его в холодильнике.\n\nПодавайте напиток в стаканах с лимонными дольками или мятой для украшения.\n\nВремя приготовления:\n\nВремя подготовки: 5 минут\n\nОбщее время: 5 минут' },
         { category: 'drink', title: 'Молочный коктейль с медом', requiredIngredients: ['milk', 'honey'], fullRecipe: 'Ингредиенты:\n\nМолоко — 250 мл\n\nМёд — 1 ст. ложка (или по вкусу)\n\nПлан готовки:\n\nВ блендер или высокую чашу налейте молоко.\n\nДобавьте мёд и перемешайте, чтобы он полностью растворился.\n\nВключите блендер на среднюю скорость и взбейте молоко с медом до образования лёгкой пенки (около 1-2 минут).\n\nПодавайте коктейль в стаканах, можно украсить сверху немного мёда или посыпать корицей.\n\nВремя приготовления:\n\nВремя подготовки: 2 минуты\n\nВремя взбивания: 1-2 минуты\n\nОбщее время: 3-4 минуты' },
         { category: 'drink', title: 'Яблочный сок (свежевыжатый)', requiredIngredients: ['apple'], fullRecipe: 'Ингредиенты:\n\nЯблоки — 4-5 шт. (в зависимости от размера яблок)\n\nПлан готовки:\n\nЯблоки тщательно промойте, нарежьте их на куски, удалите сердцевину и семена.\n\nПереместите нарезанные яблоки в соковыжималку и выжмите сок.\n\nЕсли сок получится слишком густым, можно разбавить его водой по вкусу.\n\nПодавайте сразу после приготовления, можно добавить лёд для охлаждения.\n\nВремя приготовления:\n\nВремя подготовки: 5 минут\n\nВремя выжимания сока: 5 минут\n\nОбщее время: 10 минут' },
         { category: 'drink', title: 'Рисовый напиток с лимоном', requiredIngredients: ['rice', 'lemon', 'water'], fullRecipe: 'Ингредиенты:\n\nРис — 100 г\n\nЛимоны — 1 шт.\n\nВода — 1 литр\n\nПлан готовки:\n\nПромойте рис под холодной водой.\n\nВ кастрюле доведите воду до кипения и добавьте рис. Варите рис на среднем огне около 20-25 минут до готовности.\n\nПосле того как рис сварится, остудите его до комнатной температуры.\n\nС помощью марли или ситечка процедите отвар, чтобы отделить рис от жидкости. Это и будет ваш рисовый напиток.\n\nЛимон разрежьте пополам и выжмите сок в рисовый отвар.\n\nПодавайте напиток холодным, можно добавить лёд или украсить лимонными дольками.\n\nВремя приготовления:\n\nВремя подготовки: 5 минут\n\nВремя варки риса: 20-25 минут\n\nВремя охлаждения: 10-15 минут\n\nОбщее время: 30-45 минут' },
 
-        // Десерт
         { category: 'dessert', title: 'Яблочный пирог с медом', requiredIngredients: ['apple', 'flour', 'egg', 'honey'], fullRecipe: 'Ингредиенты:\n\nЯблоки — 3-4 шт. (примерно 400 г)\n\nМука — 200 г\n\nЯйца — 2 шт.\n\nМёд — 3 ст. ложки\n\nСахар — 50 г (по желанию, если хотите более сладкое)\n\nМасло — 50 г (для теста)\n\nРазрыхлитель — 1 ч. ложка\n\nПлан готовки:\n\nРазогрейте духовку до 180°C.\n\nЯблоки очистите, удалите сердцевину и нарежьте тонкими ломтями.\n\nВ миске взбейте яйца с мёдом и сахаром (если используете). Добавьте растопленное масло и перемешайте.\n\nПостепенно добавляйте муку, просеянную с разрыхлителем, и замесите тесто.\n\nВыложите тесто в форму, смазанную маслом, и равномерно распределите яблоки сверху.\n\nВыпекайте пирог около 30-40 минут, пока он не станет золотистым. Проткните пирог деревянной палочкой — она должна выходить чистой.\n\nОставьте пирог немного остыть, затем подавайте.\n\nВремя приготовления:\n\nВремя подготовки: 15 минут\n\nВремя выпекания: 30-40 минут\n\nОбщее время: 45-55 минут' },
         { category: 'dessert', title: 'Творожная запеканка с яблоками', requiredIngredients: ['cottage_cheese', 'egg', 'flour', 'apple'], fullRecipe: 'Ингредиенты:\n\nТворог — 400 г\n\nЯйца — 2 шт.\n\nМука — 100 г\n\nЯблоки — 2-3 шт. (примерно 300 г)\n\nСахар — 3 ст. ложки (по вкусу)\n\nСметана — 2 ст. ложки (по желанию для сочности)\n\nРазрыхлитель — 1 ч. ложка\n\nМасло — 1 ст. ложка (для смазывания формы)\n\nПлан готовки:\n\nРазогрейте духовку до 180°C.\n\nЯблоки очистите от кожуры, удалите сердцевину и нарежьте мелкими кубиками.\n\nВ миске смешайте творог, яйца, сахар и сметану (по желанию). Добавьте муку и разрыхлитель, перемешайте до однородной массы.\n\nВ смазанную маслом форму выложите половину творожной массы. Сверху распределите яблоки и закройте оставшейся творожной массой.\n\nВыпекайте в духовке 30-40 минут до золотистой корочки.\n\nОставьте запеканку немного остыть, затем нарежьте на порции и подавайте.\n\nВремя приготовления:\n\nВремя подготовки: 10 минут\n\nВремя выпекания: 30-40 минут\n\nОбщее время: 40-50 минут' },
         { category: 'dessert', title: 'Гречневые печенья с медом', requiredIngredients: ['buckwheat', 'flour', 'honey', 'egg'], fullRecipe: 'Ингредиенты:\n\nГречка (в сыром виде) — 100 г\n\nМука — 150 г\n\nМёд — 3 ст. ложки\n\nЯйца — 1 шт.\n\nМасло — 50 г\n\nПлан готовки:\n\nГречку отварите в 200 мл воды до полной готовности (примерно 15-20 минут). Оставьте немного остыть.\n\nВ миске взбейте яйцо с мёдом и растопленным маслом.\n\nДобавьте отваренную гречку и перемешайте.\n\nПостепенно добавляйте муку, замешивая тесто.\n\nРазогрейте духовку до 180°C.\n\nСформируйте из теста небольшие печенья и выложите их на противень, застеленный бумагой для выпечки.\n\nВыпекайте печенье 15-20 минут до золотистого цвета.\n\nОхладите перед подачей.\n\nВремя приготовления:\n\nВремя подготовки: 10 минут\n\nВремя варки гречки: 15-20 минут\n\nВремя выпекания: 15-20 минут\n\nОбщее время: 40-45 минут' },
         { category: 'dessert', title: 'Морковные кексы с медом', requiredIngredients: ['carrot', 'flour', 'honey', 'egg'], fullRecipe: 'Ингредиенты:\n\nМорковь — 2 средние (примерно 200 г)\n\nМука — 150 г\n\nМёд — 3 ст. ложки\n\nЯйца — 2 шт.\n\nРазрыхлитель — 1 ч. ложка\n\nМасло — 50 г\n\nПлан готовки:\n\nРазогрейте духовку до 180°C.\n\nМорковь очистите и натрите на мелкой терке.\n\nВ миске взбейте яйца с мёдом и растопленным маслом.\n\nДобавьте натертую морковь, затем просеянную муку с разрыхлителем. Хорошо перемешайте.\n\nРазделите тесто по формочкам для кексов (наполняйте не более чем на 2/3).\n\nВыпекайте кексы в духовке 20-25 минут до золотистого цвета и готовности (проверьте с помощью зубочистки).\n\nОставьте кексы немного остыть, затем подавайте.\n\nВремя приготовления:\n\nВремя подготовки: 10 минут\n\nВремя выпекания: 20-25 минут\n\nОбщее время: 30-35 минут' },
 
-        // Основное блюдо
         { category: 'main', title: 'Говядина с картофелем и морковью', requiredIngredients: ['beef', 'potato', 'carrot', 'oil'], fullRecipe: `Ингредиенты:
 
 Говядина (мякоть) — 500 г
@@ -331,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Общее время: 40-50 минут` },
 
-        // Гарнир
         { category: 'garnish', title: 'Гречка с маслом', requiredIngredients: ['buckwheat', 'oil'], fullRecipe: `Ингредиенты:
 
 Гречка — 200 г
@@ -459,7 +447,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Общее время: 70-85 минут` },
 
-        // Выпечка
         { category: 'bakery', title: 'Банановые маффины', requiredIngredients: ['banana', 'flour', 'egg', 'honey'], fullRecipe: `Ингредиенты:
 
 Бананы — 2 шт.
@@ -595,58 +582,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Общее время: 30-35 минут` }
     ];
-    // ---------------------------------------------------------------------------
 
     const selectedCategoryId = localStorage.getItem('selectedFoodCategory') || '';
     const selectedProducts = JSON.parse(localStorage.getItem('selectedProducts')) || [];
     const selectedProductIds = selectedProducts.map(p => p.id);
 
-    // --- Отладка --- 
     console.log("--- Отладка списка рецептов ---");
     console.log("Выбранная категория ID:", selectedCategoryId);
     console.log("Выбранные продукты IDs:", selectedProductIds);
     console.log("Всего рецептов для проверки:", allRecipes.length);
-    // ---------------
 
     const categoryNames = { snack: 'Закуска', soup: 'Суп', drink: 'Напиток', main: 'Основное Блюдо', dessert: 'Десерт', garnish: 'Гарнир', bakery: 'Выпечка' };
 
-    // Отображаем категорию
     if (categoryContainer) {
         const categoryName = categoryNames[selectedCategoryId] || selectedCategoryId || 'Не выбрана';
         categoryContainer.innerHTML = `<p>Категория: ${categoryName}</p>`;
     }
 
-    // Отображаем выбранные продукты (как было)
     if (productListContainer) {
         productListContainer.innerHTML = '';
         if (selectedProducts.length > 0) {
              selectedProducts.forEach(product => {
                  const listItem = document.createElement('li');
-
-                 // Добавляем изображение ПЕРВЫМ, если есть src
                  if (product.imgSrc && product.imgSrc.trim() !== '') { 
                      const img = document.createElement('img');
                      img.src = product.imgSrc;
                      img.alt = product.name;
                      img.classList.add('selected-product-image');
                      img.title = product.imgSrc; 
-                     listItem.appendChild(img); // Добавляем img первым
+                     listItem.appendChild(img);
                  } else {
                      console.warn(`Image source missing for product: ${product.name}`);
-                     // Можно добавить плейсхолдер для выравнивания, если нужно
                      const placeholder = document.createElement('span');
                      placeholder.style.display = 'inline-block';
-                     placeholder.style.width = '30px'; // Ширина как у картинки
+                     placeholder.style.width = '30px';
                      placeholder.style.height = '30px';
-                     placeholder.style.marginRight = '10px'; // Отступ как у картинки
+                     placeholder.style.marginRight = '10px';
                      listItem.appendChild(placeholder);
                  }
 
-                 // Создаем span для текста ВТОРЫМ
                  const nameSpan = document.createElement('span');
                  nameSpan.classList.add('product-name-text');
                  nameSpan.textContent = product.name;
-                 listItem.appendChild(nameSpan); // Добавляем span вторым
+                 listItem.appendChild(nameSpan);
                 
                  productListContainer.appendChild(listItem);
              });
@@ -655,12 +633,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Фильтруем и отображаем рецепты
     if (recipeListUl) {
         recipeListUl.innerHTML = '';
         console.log("--- Фильтрация рецептов ---");
         
-        // Словарь для перевода ID ингредиентов на русский язык
         const ingredientTranslations = {
             'cottage_cheese': 'Творог',
             'egg': 'Яйца',
@@ -685,25 +661,22 @@ document.addEventListener('DOMContentLoaded', function() {
             'banana': 'Бананы'
         };
         
-        // Изменение: показывать все рецепты с хотя бы одним подходящим ингредиентом
         const suitableRecipes = allRecipes.filter(recipe => {
             console.log(`Проверка рецепта: "${recipe.title}" (Категория: ${recipe.category})`);
             
-            // 1. Проверка категории (если категория не выбрана, показываем все)
             const categoryMatch = !selectedCategoryId || recipe.category === selectedCategoryId;
             if (!categoryMatch) {
                 console.log(`   -> Категория не совпадает (нужна: ${selectedCategoryId})`);
                 return false;
             }
-            
-            // 2. Проверка наличия хотя бы одного ингредиента
+
             console.log(`   Необходимые ID: ${recipe.requiredIngredients.join(', ')}`);
             
             const matchingIngredients = recipe.requiredIngredients.filter(reqId => 
                 selectedProductIds.includes(reqId)
             );
             
-            recipe.matchCount = matchingIngredients.length; // Сохраняем количество совпадений
+            recipe.matchCount = matchingIngredients.length;
             recipe.matchPercent = (matchingIngredients.length / recipe.requiredIngredients.length) * 100;
             
             const hasAnyIngredient = matchingIngredients.length > 0;
@@ -716,9 +689,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`   -> Найдено ${matchingIngredients.length} из ${recipe.requiredIngredients.length} ингредиентов (${recipe.matchPercent.toFixed(0)}%)`);
             return true;
         })
-        // Сортировка: сначала те, у которых больше совпадающих ингредиентов
         .sort((a, b) => {
-            // Сначала по проценту совпадения (по убыванию)
             return b.matchPercent - a.matchPercent;
         });
         
@@ -728,17 +699,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (suitableRecipes.length > 0) {
             suitableRecipes.forEach(recipe => {
                 const li = document.createElement('li');
-                li.style.position = 'relative'; // for heart icon
+                li.style.position = 'relative';
                 li.style.cursor = 'pointer';
                 li.dataset.recipeTitle = recipe.title;
                 li.addEventListener('click', showRecipeModal);
 
-                // Название рецепта
                 const titleElement = document.createElement('strong');
                 titleElement.textContent = recipe.title;
                 li.appendChild(titleElement);
 
-                // Ингредиенты
                 const ingredientsElement = document.createElement('small');
                 ingredientsElement.classList.add('recipe-ingredients');
                 const ingredientNames = recipe.requiredIngredients.map(ing => {
@@ -748,7 +717,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 ingredientsElement.textContent = `Ингредиенты: ${ingredientNames.join(', ')}`;
                 li.appendChild(ingredientsElement);
 
-                // Heart icon for favorites
                 const favIcon = document.createElement('span');
                 favIcon.classList.add('favorite-icon');
                 const isFav = getFavoriteRecipes().some(r => r.title === recipe.title);
@@ -767,7 +735,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- Функции для модального окна (ОБНОВЛЕНА для лучшего отображения) ---
     function showRecipeModal(event) {
         const clickedTitle = event.target.closest('li').dataset.recipeTitle;
         const recipeData = allRecipes.find(r => r.title === clickedTitle);
@@ -779,7 +746,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (modal && modalTitle && modalContent) {
                 modalTitle.textContent = recipeData.title;
-                // Format recipe: highlight headings and time values, preserve line breaks
                 let formatted = recipeData.fullRecipe
                     .replace(/^Ингредиенты:/gm, '<h3 class="modal-section-heading">Ингредиенты:</h3>')
                     .replace(/^План готовки:/gm, '<h3 class="modal-section-heading">План готовки:</h3>')
@@ -795,17 +761,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeRecipeModal() {
         const modal = document.getElementById('recipe-modal');
         if (modal) {
-            modal.style.display = 'none'; // Скрываем окно
+            modal.style.display = 'none';
         }
     }
 
-    // --- Добавляем обработчик для кнопки закрытия модального окна (нужно будет добавить кнопку в HTML) ---
     const closeButton = document.getElementById('modal-close-button');
     if (closeButton) {
         closeButton.addEventListener('click', closeRecipeModal);
     }
 
-     // Закрытие модального окна по клику вне его
      window.addEventListener('click', function(event) {
         const modal = document.getElementById('recipe-modal');
         if (event.target == modal) {
