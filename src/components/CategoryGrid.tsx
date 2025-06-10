@@ -4,11 +4,16 @@ import { useRecipe } from '../contexts/RecipeContext';
 import { categories } from '../data/products';
 import '../styles/categoryGrid.css';
 
+// Компонент сетки категорий
 const CategoryGrid: React.FC = () => {
+  // Получение данных и функций из контекста рецептов
   const { selectedCategory, setSelectedCategory } = useRecipe();
+  // Состояние для отображения предупреждения
   const [showWarning, setShowWarning] = useState(false);
+  // Хук для навигации
   const navigate = useNavigate();
 
+  // Обработчик клика по кнопке "Далее"
   const handleNextClick = () => {
     if (!selectedCategory) {
       setShowWarning(true);
@@ -18,6 +23,7 @@ const CategoryGrid: React.FC = () => {
     }
   };
 
+  // Обработчик выбора категории
   const handleCategorySelect = (categoryId: string) => {
     if (selectedCategory === categoryId) {
       setSelectedCategory('');
@@ -25,7 +31,6 @@ const CategoryGrid: React.FC = () => {
       setSelectedCategory(categoryId);
     }
   };
-
 
   return (
     <div className="categories">

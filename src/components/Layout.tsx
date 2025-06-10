@@ -3,11 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import '../styles/layout.css';
 import logoIcon from '../assets/icons/logo.png';
 
+// Описание типа пропсов для Layout
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode; // Дочерние элементы, которые будут отображаться внутри макета
 }
 
+// Функциональный компонент Layout
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  // Получаем текущий путь для выделения активной ссылки
   const location = useLocation();
   
   return (

@@ -5,13 +5,16 @@ import { ingredientTranslations } from '../data/products';
 import RecipeModal from './RecipeModal';
 import '../styles/recipeList.css';
 
-// Импорты изображений (предположим, что они определены где-то рядом)ф
+// Функциональный компонент списка рецептов
 const RecipeList: React.FC = () => {
+  // Получение данных и функций из контекста рецептов
   const { filteredRecipes, selectedCategory, selectedProducts, isInFavorites, addToFavorites, removeFromFavorites } = useRecipe();
+  // Состояние для хранения выбранного рецепта
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+  // Состояние для управления видимостью модального окна
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Переводы категорий
+  // Словарь переводов категорий
   const categoryTranslations: Record<string, string> = {
     snack: 'Закуска',
     soup: 'Суп',
@@ -22,15 +25,18 @@ const RecipeList: React.FC = () => {
     bakery: 'Выпечка'
   };
 
+  // Обработчик клика по рецепту
   const handleRecipeClick = (recipe: Recipe) => {
     setSelectedRecipe(recipe);
     setIsModalOpen(true);
   };
   
+  // Функция закрытия модального окна
   const closeModal = () => {
     setIsModalOpen(false);
   };
   
+  // Обработчик добавления/удаления из избранного
   const toggleFavorite = (e: React.MouseEvent, recipe: Recipe) => {
     e.stopPropagation();
     

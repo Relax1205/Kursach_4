@@ -5,16 +5,22 @@ import RecipeModal from '../components/RecipeModal';
 import { Recipe } from '../models/types';
 import '../styles/favoritesPage.css';
 
+// Функциональный компонент страницы избранного
 const FavoritesPage: React.FC = () => {
+  // Получение данных и функций из контекста рецептов
   const { favoriteRecipes, removeFromFavorites } = useRecipe();
+  // Состояние для хранения выбранного рецепта
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+  // Состояние для управления видимостью модального окна
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  // Обработчик клика по рецепту
   const handleRecipeClick = (recipe: Recipe) => {
     setSelectedRecipe(recipe);
     setIsModalOpen(true);
   };
   
+  // Функция закрытия модального окна
   const closeModal = () => {
     setIsModalOpen(false);
   };
