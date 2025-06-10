@@ -1,9 +1,0 @@
-/* Главный CSS файл, импортирующий все остальные модули */
-
-@import 'base.css';
-@import 'main-page.css';
-@import 'about.css';
-@import 'categories.css';
-@import 'products.css';
-@import 'navigation.css'; 
-@import 'list.css';
